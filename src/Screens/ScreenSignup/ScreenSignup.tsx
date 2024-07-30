@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { storage } from '../../assets/storage';
+import { storage } from '../../utils/storage';
 import { setUserData } from '../../Redux/userSlice';
 import { SignupScreenProps, FormData } from './utils/types';
 import { styles } from './ScreenSignStyle';

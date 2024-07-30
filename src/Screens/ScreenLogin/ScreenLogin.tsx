@@ -3,7 +3,7 @@ import { View, Text, Button, TextInput, Alert } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
-import { storage } from '../../assets/storage';
+import { storage } from '../../utils/storage';
 import { setLoggedIn } from '../../Redux/userSlice';
 import { LoginScreenProps, LoginFormData } from './utils/types';
 import { loginSchema } from './utils/LoginValidation';

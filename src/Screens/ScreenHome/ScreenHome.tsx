@@ -5,7 +5,7 @@ import { RootState } from '../../Redux/store';
 import { logout } from '../../Redux/userSlice';
 import { HomeScreenProps, User } from './utils/types';
 import { styles } from './ScreenHomeStyles';
-import { storage } from '../../assets/storage';
+import { storage } from '../../utils/storage';
 
 function ScreenHome({ navigation }: HomeScreenProps) {
   const storedUserString = storage.getString('user') || '{}';
