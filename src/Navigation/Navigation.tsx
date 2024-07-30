@@ -18,7 +18,13 @@ function Navigation() {
       <Stack.Navigator initialRouteName="Signup">
         <Stack.Screen name="Signup" component={ScreenSignup} />
         <Stack.Screen name="Login" component={ScreenLogin} />
-        <Stack.Screen name="Home" component={ScreenHome} />
+        <Stack.Screen
+          name="Home"
+          component={ScreenHome}
+          options={{
+            headerLeft: () => null, 
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
