@@ -13,18 +13,18 @@ export interface User {
   name: string;
 }
 export interface CardData {
-    name: string;
-    description: string;
-   // img: string;
-    price: string;
-    rate:number;
-    ratecount:string;
+    pageURL: string;
+    likes: number;
+    tags: string;
+    views: number;
+    downloads: number;
   }
+  
   export interface CardContainerProps {
-    name: string;
-    description: string;
-   // img: any;
-    price: string;
-    rate: number;
-    ratecount: string;
+    pageURL: string;
+    likes: number;
+    tags: string;
+    views: number;
+    downloads: number;
   }
+  

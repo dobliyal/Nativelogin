@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { storage } from '../../utils/storage';
-import { setUserData } from '../../Redux/userSlice';
+import { setUserData } from '../../Redux/slices/userSlice';
 import { SignupScreenProps, FormData } from './utils/types';
 import { styles } from './ScreenSignStyle';
 import { Signupschema } from './utils/SignupValidation';

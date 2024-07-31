@@ -1,14 +1,16 @@
 import React from 'react'
-import { View } from 'react-native'
+import { View,Text} from 'react-native'
 import MainCardComponent from './MainCardComponent'
 
 const ScreenHome = () => {
   return (
     <View>
+      <Text>Let's browse</Text>
       <MainCardComponent/>
     </View>
   )
-}
+};
+
 
 export default ScreenHome
 

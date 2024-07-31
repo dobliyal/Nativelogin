@@ -1,32 +1,41 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import React, { useEffect } from 'react';
+import { View, StyleSheet, ActivityIndicator, FlatList } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import CardContainer from './CardContainer';
-import { CardData } from './utils/types';
-const cardData: CardData[] = [
-  {
-    name: 'Chicken Hawaiian',
-    description: 'Chicken, Cheese and Pineapple',
-   // img: require('../assets/cardImages/cardimg1.png'),
-    price:'$ 12.20',
-    rate:4.5,
-    ratecount:'(25+)'
-  },
-  {
-    name: 'Red N Hot Pizza',
-    description: 'Chicken, Chili',
-    //img: require('../assets/cardImages/cardimg2.png'),
-    price:'$ 10.35',
-    rate:4.5,
-    ratecount:'(25+)',
-  },
-];
+import { fetchImagesRequest } from '../../Redux/slices/imageSlice';
+import { RootState } from '../../Redux/store';
+import { PixabayImage } from '../../Redux/types';
 
-const MainCardComponent: React.FC= () => {
+const MainCardComponent: React.FC = () => {
+  const dispatch = useDispatch();
+  const data = useSelector((state: RootState) => state.image.images);
+  const loading = useSelector((state: RootState) => state.image.loading);
+
+  useEffect(() => {
+    dispatch(fetchImagesRequest());
+  }, [dispatch]);
+
+  if (loading) {
+    return <ActivityIndicator size="large" color="#0000ff" />;
+  }
+
+  const renderItem = ({ item }: { item: PixabayImage }) => (
+    <CardContainer
+      pageURL={item.pageURL}
+      likes={item.likes}
+      tags={item.tags}
+      views={item.views}
+      downloads={item.downloads}
+    />
+  );
+
   return (
-    <View style={styles.container}>
-      {cardData.map((item, index) => (
-        <CardContainer key={index} name={item.name} description={item.description}  price={item.price} rate={item.rate} ratecount={item.ratecount}/>
-      ))}
+    <View>
+      <FlatList
+        data={data}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.id.toString()}
+      />
     </View>
   );
 };

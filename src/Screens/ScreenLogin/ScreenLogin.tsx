@@ -4,7 +4,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
 import { storage } from '../../utils/storage';
-import { setLoggedIn } from '../../Redux/userSlice';
+import { setLoggedIn } from '../../Redux/slices/userSlice';
 import { LoginScreenProps, LoginFormData } from './utils/types';
 import { loginSchema } from './utils/LoginValidation';
 import { styles } from './ScreenLoginStyles';

@@ -15,7 +15,8 @@ const Stack = createStackNavigator<RootStackParamList>();
 function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Signup">
+      <Stack.Navigator initialRouteName="Home">
+        {/* change this to signup */}
         <Stack.Screen name="Signup" component={ScreenSignup} />
         <Stack.Screen name="Login" component={ScreenLogin} />
         <Stack.Screen
