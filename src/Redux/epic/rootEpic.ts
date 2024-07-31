@@ -1,8 +1,9 @@
-import { combineEpics } from 'redux-observable';
+import { combineEpics,Epic } from 'redux-observable';
 import { authEpic } from './authEpic';
 import { imageEpic } from './imageEpic';
 
-export const rootEpic = combineEpics(
+ const epics:Epic[] =[
   authEpic,
-  imageEpic
-);
+  imageEpic] as Epic[];
+  
+  export const rootEpic=combineEpics(...epics);

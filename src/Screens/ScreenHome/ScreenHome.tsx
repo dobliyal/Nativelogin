@@ -1,15 +1,23 @@
 import React from 'react'
-import { View,Text} from 'react-native'
-import MainCardComponent from './MainCardComponent'
+import { View,Text, StyleSheet} from 'react-native'
+import MainCardComponent from './HomeComponents/MainCardComponent'
 
 const ScreenHome = () => {
   return (
     <View>
-      <Text>Let's browse</Text>
+      <Text style={styles.header}>Let's browse</Text>
       <MainCardComponent/>
     </View>
   )
 };
+const styles=StyleSheet.create({
+  header:{
+    fontSize:32,
+    color:'grey',
+    paddingLeft:20,
+  }
+
+})
 
 
 export default ScreenHome

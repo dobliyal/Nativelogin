@@ -3,30 +3,36 @@ import ScreenSignup from '../Screens/ScreenSignup/ScreenSignup';
 import ScreenLogin from '../Screens/ScreenLogin/ScreenLogin';
 import ScreenHome from '../Screens/ScreenHome/ScreenHome';
 import { NavigationContainer } from '@react-navigation/native';
+import { setLoggedIn } from '../Redux/slices/userSlice';
+import { useSelector } from 'react-redux';
+import { RootState } from '../Redux/rootReducer';
+import { AuthStackParamList,AppStackParamList } from './types';
 
-export type RootStackParamList = {
-  Signup: undefined;
-  Login: undefined;
-  Home: undefined;
-};
 
-const Stack = createStackNavigator<RootStackParamList>();
+const AuthStack = createStackNavigator<AuthStackParamList>();
+const AppStack = createStackNavigator<AppStackParamList>();
 
 function Navigation() {
+const isAuthenticated=useSelector((state:RootState)=>state.auth.isLoggedIn)
+
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        {/* change this to signup */}
-        <Stack.Screen name="Signup" component={ScreenSignup} />
-        <Stack.Screen name="Login" component={ScreenLogin} />
-        <Stack.Screen
-          name="Home"
-          component={ScreenHome}
-          options={{
-            headerLeft: () => null, 
-          }}
-        />
-      </Stack.Navigator>
+        {
+          isAuthenticated ?(
+          <AppStack.Navigator initialRouteName="Home">
+              <AppStack.Screen name="Home" component={ScreenHome} />
+          </AppStack.Navigator>
+          ):
+          (
+            <AuthStack.Navigator initialRouteName="Signup">
+            <AuthStack.Screen name="Signup" component={ScreenSignup} />
+            <AuthStack.Screen name="Login" component={ScreenLogin} />
+            </AuthStack.Navigator>
+          )
+        }
+        
+        
+     
     </NavigationContainer>
   );
 }

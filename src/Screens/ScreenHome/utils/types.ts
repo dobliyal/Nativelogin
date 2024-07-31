@@ -1,7 +1,7 @@
 import { StackNavigationProp } from '@react-navigation/stack';
-import { RootStackParamList } from '../../../Navigation/Navigation';
+import { AppStackParamList } from '../../../Navigation/types';
 
-export type HomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Home'>;
+export type HomeScreenNavigationProp = StackNavigationProp<AppStackParamList, 'Home'>;
 
 export interface HomeScreenProps {
   navigation: HomeScreenNavigationProp;
@@ -13,6 +13,7 @@ export interface User {
   name: string;
 }
 export interface CardData {
+    id: any;
     pageURL: string;
     likes: number;
     tags: string;
