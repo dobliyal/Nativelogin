@@ -1,8 +1,9 @@
+
 import React, { useEffect } from 'react';
 import { View, Text, StyleSheet, ActivityIndicator, FlatList } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import CardContainer from './CardContainer';
-import { fetchImagesRequest } from '../../../Redux/slices/imageSlice';
+import { fetchImagesRequest } from '../Redux/imageSlice';
 import { RootState } from '../../../Redux/store';
 import { PixabayImage } from '../../../Redux/types';
 import { ListRenderItemInfo } from 'react-native';
@@ -67,6 +68,33 @@ const styles = StyleSheet.create({
 });
 
 export default MainCardComponent;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

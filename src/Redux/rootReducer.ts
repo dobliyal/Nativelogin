@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 import authReducer from '../Redux/slices/userSlice';
-import imageReducer from '../Redux/slices/imageSlice';
+import imageReducer from '../Screens/ScreenHome/Redux/imageSlice';
 
 const rootReducer = combineReducers({
   auth: authReducer,
