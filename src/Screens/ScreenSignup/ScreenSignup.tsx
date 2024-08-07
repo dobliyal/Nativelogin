@@ -1,14 +1,13 @@
 import React from 'react';
-import { View, Text, Button, TextInput } from 'react-native';
+import { View, Text, Button, TextInput, Alert } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { storage } from '../../utils/storage';
-import { setUserData } from '../../Redux/slices/userSlice';
+import { useDispatch } from 'react-redux';
+import { signupUser } from '../../utils/Firebase';
 import { SignupScreenProps, FormData } from './utils/types';
 import { styles } from './ScreenSignStyle';
 import { Signupschema } from './utils/SignupValidation';
+import { setLoggedIn } from '../../Redux/slices/userSlice';
 
 function ScreenSignup({ navigation }: SignupScreenProps) {
   const { control, handleSubmit, formState: { errors } } = useForm<FormData>({
@@ -16,10 +15,14 @@ function ScreenSignup({ navigation }: SignupScreenProps) {
   });
   const dispatch = useDispatch();
 
-  const onSubmit = (data: FormData) => {
-    storage.set('user', JSON.stringify(data));
-    dispatch(setUserData(data));
-    navigation.navigate('Login');
+  const onSubmit = async (data: FormData) => {
+    try {
+        await signupUser(data, dispatch);
+        // dispatch(setLoggedIn(true));
+       navigation.navigate('Home');
+    } catch (error) {
+      Alert.alert('Signup Error', 'Failed to sign up. Please try again.');
+    }
   };
 
   return (

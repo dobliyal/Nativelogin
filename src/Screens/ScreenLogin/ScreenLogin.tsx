@@ -3,11 +3,11 @@ import { View, Text, Button, TextInput, Alert } from 'react-native';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useDispatch } from 'react-redux';
-import { storage } from '../../utils/storage';
-import { setLoggedIn } from '../../Redux/slices/userSlice';
+import { loginUser } from '../../utils/Firebase';
 import { LoginScreenProps, LoginFormData } from './utils/types';
 import { loginSchema } from './utils/LoginValidation';
 import { styles } from './ScreenLoginStyles';
+import { mmkvStorage } from '../../utils/storage';
 
 function ScreenLogin({ navigation }: LoginScreenProps) {
   const { control, handleSubmit, formState: { errors } } = useForm<LoginFormData>({
@@ -15,14 +15,12 @@ function ScreenLogin({ navigation }: LoginScreenProps) {
   });
   const dispatch = useDispatch();
 
-  const onSubmit = (data: LoginFormData) => {
-    const storedUserString = storage.getString('user') || '{}';
-    const storedUser = JSON.parse(storedUserString);
-    if (storedUser && data.username === storedUser.username && data.password === storedUser.password) {
-      dispatch(setLoggedIn(true));
+  const onSubmit = async (data: LoginFormData) => {
+    try {
+      await loginUser(data.email, data.password, dispatch);
       navigation.navigate('Home');
-    } else {
-      Alert.alert('Invalid login credentials');
+    } catch (error) {
+      Alert.alert('Login Error', 'Invalid login credentials');
     }
   };
 
@@ -31,17 +29,17 @@ function ScreenLogin({ navigation }: LoginScreenProps) {
       <Text style={styles.title}>Login</Text>
       <Controller
         control={control}
-        name="username"
+        name="email"
         render={({ field: { onChange, value } }) => (
           <TextInput
             style={styles.input}
-            placeholder="Username"
+            placeholder="Email"
             onChangeText={onChange}
             value={value}
           />
         )}
       />
-      {errors.username && <Text style={styles.errorText}>{errors.username.message}</Text>}
+      {errors.email && <Text style={styles.errorText}>{errors.email.message}</Text>}
       <Controller
         control={control}
         name="password"

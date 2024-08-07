@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "732313981434",
+    "project_id": "authentication-1098c",
+    "storage_bucket": "authentication-1098c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732313981434:android:df505cce8b67b8bc34d443",
+        "android_client_info": {
+          "package_name": "com.loginreactnative"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAgnxwrEepfx-KwkH-E20lWrsNKqXXZ36o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

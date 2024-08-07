@@ -1,6 +1,6 @@
-import { StackNavigationProp } from '@react-navigation/stack';
-import { AuthStackParamList } from '../../../Navigation/types';
+// src/Screens/ScreenSignup/utils/types.ts
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { AuthStackParamList } from '../../../Navigation/types';
 
 export type SignupScreenNavigationProp = NativeStackNavigationProp<AuthStackParamList, 'Signup'>;
 
