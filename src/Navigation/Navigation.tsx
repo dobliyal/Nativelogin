@@ -45,7 +45,7 @@ function Navigation() {
       {isAuthenticated ? (
         <AppStack.Navigator initialRouteName="Home">
           <AppStack.Screen name="Home" component={ScreenHome} />
-          <AppStack.Screen name="Login" component={ScreenLogin} />
+        {/* <AppStack.Screen name="Login" component={ScreenLogin}/>*/} 
         </AppStack.Navigator>
       ) : (
         <AuthStack.Navigator initialRouteName="Signup">

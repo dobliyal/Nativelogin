@@ -19,7 +19,7 @@ function ScreenSignup({ navigation }: SignupScreenProps) {
     try {
         await signupUser(data, dispatch);
         // dispatch(setLoggedIn(true));
-       navigation.navigate('Home');
+      // navigation.navigate('Home');
     } catch (error) {
       Alert.alert('Signup Error', 'Failed to sign up. Please try again.');
     }
@@ -70,6 +70,9 @@ function ScreenSignup({ navigation }: SignupScreenProps) {
       {errors.password && <Text style={styles.errorText}>Password must be at least 6 characters.</Text>}
       <View style={styles.button}>
         <Button title="Signup" onPress={handleSubmit(onSubmit)} />
+      </View>
+      <View style={styles.button}>
+        <Button title="Login" onPress={()=>navigation.navigate('Login')}/>
       </View>
     </View>
   );

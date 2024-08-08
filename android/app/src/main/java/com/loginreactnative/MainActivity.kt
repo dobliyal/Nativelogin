@@ -1,4 +1,4 @@
-package com.loginreactnative
+package com.loginreactnativerohit
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate

@@ -1,4 +1,4 @@
-package com.loginreactnative
+package com.loginreactnativerohit
 
 import android.app.Application
 import com.facebook.react.PackageList

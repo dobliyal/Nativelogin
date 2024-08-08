@@ -12,7 +12,7 @@ const ScreenHome = ({navigation}:HomeScreenProps) => {
   const handleLogout = async () => {
     try {
       await logoutUser(dispatch);
-      navigation.navigate('Login');
+       //navigation.navigate('Login');
     } catch (error) {
       console.error('Logout failed:', error);
     }
